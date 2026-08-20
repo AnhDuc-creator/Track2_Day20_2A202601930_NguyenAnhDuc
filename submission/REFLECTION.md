@@ -227,10 +227,10 @@ chế, và **cả hai đều sai**. Số đo đầy đủ ở `benchmarks/bonus-
 
 | `-ngl` | log: offloaded | CUDA0 model buffer | nvidia-smi used / 2048 MiB |
 | :----- | :------------- | -----------------: | -------------------------: |
-| 0      | `0/36`         |               — |  **151 MiB** |
-| 8      | `8/36`         |  549.66 MiB |  **713 MiB** |
-| 16     | `16/36`        |  871.62 MiB | **1047 MiB** |
-| 99     | `36/36`        | 1481.89 MiB | **1677 MiB** |
+| 0      | `0/36`         |                  — |                **151 MiB** |
+| 8      | `8/36`         |         549.66 MiB |                **713 MiB** |
+| 16     | `16/36`        |         871.62 MiB |               **1047 MiB** |
+| 99     | `36/36`        |        1481.89 MiB |               **1677 MiB** |
 
 Full offload dùng 1677/2048 MiB — **vừa, còn thừa 371 MiB**. Không mức nào tràn sang
 shared memory. Con số "8 layer ≈ 0.68 GB vừa khít 1645 MiB" còn sai số học ngay từ đầu:
@@ -273,13 +273,13 @@ ngược nhau. Chi tiết trong `benchmarks/bonus-c9-embedding-serving.md`.
 
 ### B4 (C2) — KV cache quantization f16 → q8_0
 
-| Trục | q8_0 so với f16 | Độ tin cậy |
-| :--- | :--- | :--- |
-| Bộ nhớ KV | **−46.9%** ở mọi ctx | Cao |
-| RSS tiến trình | −18.7 MB (ctx 2048) → −461.1 MB (ctx 131072) | Cao |
-| Prefill | **−25%** (chậm hơn) | Cao — dải rep không giao nhau |
-| Decode | +4.4% (nhanh hơn) | **Thấp — không vượt nhiễu** |
-| Chất lượng (eval 10 prompt) | 8/10 ↔ 8/10 | Trung bình — mẫu nhỏ |
+| Trục                        | q8_0 so với f16                              | Độ tin cậy                    |
+| :-------------------------- | :------------------------------------------- | :---------------------------- |
+| Bộ nhớ KV                   | **−46.9%** ở mọi ctx                         | Cao                           |
+| RSS tiến trình              | −18.7 MB (ctx 2048) → −461.1 MB (ctx 131072) | Cao                           |
+| Prefill                     | **−25%** (chậm hơn)                          | Cao — dải rep không giao nhau |
+| Decode                      | +4.4% (nhanh hơn)                            | **Thấp — không vượt nhiễu**   |
+| Chất lượng (eval 10 prompt) | 8/10 ↔ 8/10                                  | Trung bình — mẫu nhỏ          |
 
 Con số đáng nói nhất là **0.531**: tỉ lệ KV q8_0/f16 giống hệt nhau ở cả bốn mức ctx, và
 nó không phải "gần một nửa" mà là 34/64 chính xác — mỗi block 32 phần tử lưu 32 byte
