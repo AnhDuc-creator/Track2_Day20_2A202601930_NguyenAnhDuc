@@ -74,7 +74,7 @@ def is_committed(path: pathlib.Path) -> bool | None:
         rel = str(path.resolve().relative_to(labkit.repo_root()))
     except ValueError:
         return None
-    return rel in TRACKED
+    return rel.replace(chr(92), '/') in TRACKED
 
 
 class Report:

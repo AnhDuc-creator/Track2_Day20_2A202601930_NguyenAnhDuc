@@ -29,6 +29,13 @@ tôi ghi lại file kèm BOM là chạy được. Thứ hai, MX230 chỉ có 204
 Q4 nặng 2.97 GB nên không nhét vừa; tôi đặt `LAB_N_GPU_LAYERS=0` và chạy toàn bộ trên
 CPU. `nvidia-smi` xác nhận 0 MiB VRAM được dùng trong suốt lab.
 
+Thứ ba, `scripts/verify.py` fail trên Windows với mọi file nằm trong thư mục con:
+`is_committed()` dựng đường dẫn tương đối bằng `pathlib` (ra `benchmarks\file.md`) rồi
+so với `git ls-files` (trả `benchmarks/file.md`), nên chuỗi không bao giờ khớp. File ở
+gốc repo như `hardware.json` thì pass vì không có separator. Tôi vá một dòng trong
+`is_committed()` để chuẩn hóa separator về `/` trước khi so sánh. Đây là sửa lỗi tương
+thích, không thay đổi điều kiện kiểm tra nào.
+
 ---
 
 ## 2. Đo lường _(rubric 3, 4, 5 — 20 điểm)_
