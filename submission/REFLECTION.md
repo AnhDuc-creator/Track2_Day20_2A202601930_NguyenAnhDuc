@@ -150,22 +150,40 @@ như "dùng hết máy".
 
 ## 6. Bonus _(optional — tối đa 20 điểm)_
 
-> Bỏ trống nếu không làm. Xem `bonus/README.md`. Đừng làm hết — **một** finding sâu
-> ăn điểm hơn năm bảng nông.
-
-**Đã làm:** _<B1 build-compare / B2 sweep nào / B4 challenge nào / B5 lựa chọn nào>_
+**Đã làm:** B2 `sweep-gpu` · B3 (số liệu bên dưới) · B5 chọn C9 embedding serving
+(`serve-embed` + `embed-demo`), kèm `semantic-cache-offline` làm đối chứng
 
 **Numbers:**
 
 ```
-before:  <số>
-after:   <số>
-speedup: <X.Y>×
+before:  9.4 tok/s   (-ngl 0, CPU-only)
+after:   11.8 tok/s  (-ngl 8, partial offload)
+speedup: 1.25x
 ```
 
 **Điều này nói lên gì mà deck chưa nói:**
 
-_(để trống nếu bạn không làm phần này)_
+Deck coi `-ngl` như một thang đo đơn điệu: càng offload nhiều càng nhanh, cho tới khi
+model vừa VRAM. Trên MX230 2 GB, đường cong **peak ở giữa** rồi sụt: `-ngl 8` cho 11.8
+tok/s còn `-ngl 99` chỉ 10.3. Cái hết trước là VRAM chứ không phải băng thông PCIe — 8
+trong 35 layer chiếm khoảng 0.68 GB, vừa khít 1645 MiB trống; từ 16 layer trở lên tràn
+sang shared system memory qua WDDM mà driver không báo lỗi.
+
+Điều deck không nói rõ là **vì sao partial offload lại thắng cả CPU-only**. Không phải vì
+GPU nhanh hơn — GDDR5 của MX230 (~40 GB/s) còn chậm hơn LPDDR4X hai kênh của CPU. Mà vì
+hai hệ thống bộ nhớ cùng gánh dòng trọng số: 8 layer đọc từ VRAM song song với 27 layer
+đọc từ RAM, tổng byte/giây lớn hơn từng bên riêng lẻ. Với workload bị chặn bởi băng thông,
+cộng thêm một kênh nhớ độc lập có giá trị kể cả khi kênh đó chậm hơn. Đó là lập luận về
+băng thông tổng hợp, không phải về "GPU acceleration".
+
+Cần nói rõ giới hạn: `-ngl 0` cho 9.4 tok/s ở sweep này nhưng 10.4 ở `make tune`, tức sàn
+nhiễu khoảng 10%. Toàn bộ dải `-ngl` 16–99 (9.1–10.3) nằm trong sàn đó và không phân biệt
+được với nhau. Chỉ có `-ngl 8` ở 1.25x là vượt nhiễu.
+
+C9 bổ sung một quan sát thứ hai: embedding serving batch 16 cho throughput 9.5x với
+latency chỉ tăng 1.69x, trong khi chat serving ở track 02 tăng tải 5x chỉ được 1.82x
+throughput. Cùng một model, cùng một máy, hai đường cong batching ngược nhau — chi tiết
+trong `benchmarks/bonus-c9-embedding-serving.md`.
 
 ---
 
