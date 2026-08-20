@@ -1,0 +1,123 @@
+{
+  "host": "Windows-AMD64",
+  "build": "b10488",
+  "ngl": 0,
+  "threads": 4,
+  "parallel": 4,
+  "measure": [
+    {
+      "ctx_total": 8192,
+      "ctx_per_slot": 2048,
+      "cache_type": "f16",
+      "kv": {
+        "caches": [
+          {
+            "mib": 48.0,
+            "cells": 2048,
+            "layers": 3
+          },
+          {
+            "mib": 48.0,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 96.0
+      },
+      "rss_after_warmup_mb": 1979.8,
+      "rss_after_eval_mb": 2029.7,
+      "peak_wset_mb": 2029.7,
+      "latency": {
+        "reps": [
+          {
+            "prompt_n": 590,
+            "prefill_tps": 93.65778081856901,
+            "predicted_n": 41,
+            "decode_tps": 7.89822817072889,
+            "prompt_ms": 6299.53,
+            "predicted_ms": 5064.427
+          }
+        ],
+        "prefill_tps_median": 93.66,
+        "decode_tps_median": 7.9,
+        "prompt_n": 590
+      },
+      "quality": {
+        "passed": 8,
+        "total": 10,
+        "results": [
+          {
+            "id": "a1",
+            "kind": "num",
+            "ok": true,
+            "detail": "352",
+            "reply": "352"
+          },
+          {
+            "id": "a2",
+            "kind": "num",
+            "ok": true,
+            "detail": "2515",
+            "reply": "2515"
+          },
+          {
+            "id": "a3",
+            "kind": "num",
+            "ok": false,
+            "detail": "1265",
+            "reply": "1265"
+          },
+          {
+            "id": "a4",
+            "kind": "num",
+            "ok": false,
+            "detail": "5776",
+            "reply": "5776"
+          },
+          {
+            "id": "a5",
+            "kind": "num",
+            "ok": true,
+            "detail": "19",
+            "reply": "19"
+          },
+          {
+            "id": "j1",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"renews\": \"2026-03-14\", \"amount\": 18500, \"cadence\": \"monthly\"}\n```"
+          },
+          {
+            "id": "j2",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"name\": \"Tomas Vogel\", \"title\": \"Head of Supply\", \"city\": \"Hamburg\"}\n```"
+          },
+          {
+            "id": "j3",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"runs\": 97, \"drivers\": 18, \"on_time\": 0.79}\n```"
+          },
+          {
+            "id": "j4",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"start\": \"22:00\", \"end\": \"06:00\", \"differential_percent\": 15}\n```"
+          },
+          {
+            "id": "j5",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"max_service_events\": 12, \"max_km\": 400000}\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

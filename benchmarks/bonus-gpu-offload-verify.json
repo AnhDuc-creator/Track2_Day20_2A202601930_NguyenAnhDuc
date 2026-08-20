@@ -1,0 +1,122 @@
+{
+  "purpose": "Verify the mechanism claimed in bonus-gpu-offload-sweep.md: did VRAM run out, and does the -ngl 8 speedup reproduce?",
+  "host": "Windows-AMD64",
+  "build": "b10488",
+  "model": "gemma-4-E2B-it-UD-Q4_K_XL.gguf",
+  "gpu": "NVIDIA GeForce MX230",
+  "vram_total_mib": 2048,
+  "nvidia_smi_used_mib_idle": 0,
+  "free_vram_mib_reported_by_llama_cpp": 1645,
+  "server_config": "-t 4 --ctx-size 2048 --parallel 4 --cont-batching (same as lab track 02)",
+  "bench_config": "llama-bench -p 0 -n 128 -t 4 -r 5  (original sweep used -r 2)",
+  "rows": [
+    {
+      "ngl": 0,
+      "offloaded_layers": "0/36",
+      "cuda0_model_buffer_mib": 0.0,
+      "cpu_mapped_model_buffer_mib": 3021.89,
+      "cuda0_compute_buffer_mib": 118.88,
+      "kv_on_cuda0_mib": [],
+      "kv_on_cpu_mib": [
+        0.0,
+        0.0,
+        12.0,
+        24.0
+      ],
+      "nvidia_smi_used_mib_server_alive": 151,
+      "nvidia_smi_used_mib_after_decode": 151,
+      "fit_projection": "common_params_fit_impl: projected to use 118 MiB of device memory vs. 1645 MiB of free device memory",
+      "fit_overrode_ngl": true,
+      "tg128_avg_ts_5reps": 10.177097,
+      "tg128_stddev_ts_5reps": 0.46212,
+      "tg128_samples_ts_5reps": [
+        10.6383,
+        10.4031,
+        10.1695,
+        10.2613,
+        9.41334
+      ]
+    },
+    {
+      "ngl": 8,
+      "offloaded_layers": "8/36",
+      "cuda0_model_buffer_mib": 549.66,
+      "cpu_mapped_model_buffer_mib": 2736.23,
+      "cuda0_compute_buffer_mib": 118.88,
+      "kv_on_cuda0_mib": [],
+      "kv_on_cpu_mib": [
+        0.0,
+        0.0,
+        12.0,
+        24.0
+      ],
+      "nvidia_smi_used_mib_server_alive": 703,
+      "nvidia_smi_used_mib_after_decode": 713,
+      "fit_projection": "common_params_fit_impl: projected to use 668 MiB of device memory vs. 1645 MiB of free device memory",
+      "fit_overrode_ngl": false,
+      "tg128_avg_ts_5reps": 9.09715,
+      "tg128_stddev_ts_5reps": 1.773828,
+      "tg128_samples_ts_5reps": [
+        10.7485,
+        10.515,
+        9.8322,
+        7.38546,
+        7.00464
+      ]
+    },
+    {
+      "ngl": 16,
+      "offloaded_layers": "16/36",
+      "cuda0_model_buffer_mib": 871.62,
+      "cpu_mapped_model_buffer_mib": 2414.27,
+      "cuda0_compute_buffer_mib": 131.5,
+      "kv_on_cuda0_mib": [],
+      "kv_on_cpu_mib": [
+        0.0,
+        0.0,
+        12.0,
+        24.0
+      ],
+      "nvidia_smi_used_mib_server_alive": 1037,
+      "nvidia_smi_used_mib_after_decode": 1047,
+      "fit_projection": "common_params_fit_impl: projected to use 1003 MiB of device memory vs. 1645 MiB of free device memory",
+      "fit_overrode_ngl": false,
+      "tg128_avg_ts_5reps": 4.82436,
+      "tg128_stddev_ts_5reps": 0.723232,
+      "tg128_samples_ts_5reps": [
+        6.0915,
+        4.68254,
+        4.47929,
+        4.5809,
+        4.28757
+      ]
+    },
+    {
+      "ngl": 99,
+      "offloaded_layers": "36/36",
+      "cuda0_model_buffer_mib": 1481.89,
+      "cpu_mapped_model_buffer_mib": 1804.0,
+      "cuda0_compute_buffer_mib": 114.52,
+      "kv_on_cuda0_mib": [
+        0.0,
+        0.0,
+        12.0,
+        24.0
+      ],
+      "kv_on_cpu_mib": [],
+      "nvidia_smi_used_mib_server_alive": 1667,
+      "nvidia_smi_used_mib_after_decode": 1677,
+      "fit_projection": "common_params_fit_impl: projected to use 1632 MiB of device memory vs. 1645 MiB of free device memory",
+      "fit_overrode_ngl": false,
+      "tg128_avg_ts_5reps": 7.519968,
+      "tg128_stddev_ts_5reps": 2.677636,
+      "tg128_samples_ts_5reps": [
+        10.5131,
+        10.1533,
+        6.86048,
+        4.94793,
+        5.12506
+      ]
+    }
+  ]
+}

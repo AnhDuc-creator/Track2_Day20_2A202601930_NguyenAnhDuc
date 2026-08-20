@@ -1,0 +1,485 @@
+{
+  "host": "Windows-AMD64",
+  "build": "b10488",
+  "ngl": 0,
+  "threads": 4,
+  "parallel": 4,
+  "rss_sweep": [
+    {
+      "ctx_total": 2048,
+      "ctx_per_slot": 512,
+      "cache_type": "f16",
+      "rss_after_load_mb": 1893.3,
+      "rss_after_warmup_mb": 1915.2,
+      "peak_wset_mb": 1918.0,
+      "load_s": 4.3,
+      "kv": {
+        "caches": [
+          {
+            "mib": 12.0,
+            "cells": 512,
+            "layers": 3
+          },
+          {
+            "mib": 24.0,
+            "cells": 512,
+            "layers": 12
+          }
+        ],
+        "total_mib": 36.0
+      }
+    },
+    {
+      "ctx_total": 2048,
+      "ctx_per_slot": 512,
+      "cache_type": "q8_0",
+      "rss_after_load_mb": 1878.1,
+      "rss_after_warmup_mb": 1896.5,
+      "peak_wset_mb": 1901.2,
+      "load_s": 4.9,
+      "kv": {
+        "caches": [
+          {
+            "mib": 6.38,
+            "cells": 512,
+            "layers": 3
+          },
+          {
+            "mib": 12.75,
+            "cells": 512,
+            "layers": 12
+          }
+        ],
+        "total_mib": 19.13
+      }
+    },
+    {
+      "ctx_total": 16384,
+      "ctx_per_slot": 4096,
+      "cache_type": "f16",
+      "rss_after_load_mb": 2009.9,
+      "rss_after_warmup_mb": 2031.9,
+      "peak_wset_mb": 2034.7,
+      "load_s": 5.1,
+      "kv": {
+        "caches": [
+          {
+            "mib": 96.0,
+            "cells": 4096,
+            "layers": 3
+          },
+          {
+            "mib": 48.0,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 144.0
+      }
+    },
+    {
+      "ctx_total": 16384,
+      "ctx_per_slot": 4096,
+      "cache_type": "q8_0",
+      "rss_after_load_mb": 1939.8,
+      "rss_after_warmup_mb": 1958.2,
+      "peak_wset_mb": 1962.6,
+      "load_s": 5.1,
+      "kv": {
+        "caches": [
+          {
+            "mib": 51.0,
+            "cells": 4096,
+            "layers": 3
+          },
+          {
+            "mib": 25.5,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 76.5
+      }
+    },
+    {
+      "ctx_total": 65536,
+      "ctx_per_slot": 16384,
+      "cache_type": "f16",
+      "rss_after_load_mb": 2333.8,
+      "rss_after_warmup_mb": 2355.9,
+      "peak_wset_mb": 2358.6,
+      "load_s": 5.4,
+      "kv": {
+        "caches": [
+          {
+            "mib": 384.0,
+            "cells": 16384,
+            "layers": 3
+          },
+          {
+            "mib": 48.0,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 432.0
+      }
+    },
+    {
+      "ctx_total": 65536,
+      "ctx_per_slot": 16384,
+      "cache_type": "q8_0",
+      "rss_after_load_mb": 2107.2,
+      "rss_after_warmup_mb": 2125.5,
+      "peak_wset_mb": 2130.0,
+      "load_s": 5.0,
+      "kv": {
+        "caches": [
+          {
+            "mib": 204.0,
+            "cells": 16384,
+            "layers": 3
+          },
+          {
+            "mib": 25.5,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 229.5
+      }
+    },
+    {
+      "ctx_total": 131072,
+      "ctx_per_slot": 32768,
+      "cache_type": "f16",
+      "rss_after_load_mb": 2787.4,
+      "rss_after_warmup_mb": 2809.3,
+      "peak_wset_mb": 2812.2,
+      "load_s": 5.3,
+      "kv": {
+        "caches": [
+          {
+            "mib": 768.0,
+            "cells": 32768,
+            "layers": 3
+          },
+          {
+            "mib": 48.0,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 816.0
+      }
+    },
+    {
+      "ctx_total": 131072,
+      "ctx_per_slot": 32768,
+      "cache_type": "q8_0",
+      "rss_after_load_mb": 2330.1,
+      "rss_after_warmup_mb": 2348.2,
+      "peak_wset_mb": 2352.9,
+      "load_s": 5.2,
+      "kv": {
+        "caches": [
+          {
+            "mib": 408.0,
+            "cells": 32768,
+            "layers": 3
+          },
+          {
+            "mib": 25.5,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 433.5
+      }
+    }
+  ],
+  "measure": [
+    {
+      "ctx_total": 65536,
+      "ctx_per_slot": 16384,
+      "cache_type": "f16",
+      "kv": {
+        "caches": [
+          {
+            "mib": 384.0,
+            "cells": 16384,
+            "layers": 3
+          },
+          {
+            "mib": 48.0,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 432.0
+      },
+      "rss_after_warmup_mb": 2356.0,
+      "rss_after_eval_mb": 2080.0,
+      "peak_wset_mb": 2477.7,
+      "latency": {
+        "reps": [
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 125.83762667424078,
+            "predicted_n": 45,
+            "decode_tps": 1.4863497523521738,
+            "prompt_ms": 62588.593,
+            "predicted_ms": 29602.723
+          },
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 131.25845426271164,
+            "predicted_n": 45,
+            "decode_tps": 1.2586130970420735,
+            "prompt_ms": 60003.754,
+            "predicted_ms": 34959.115
+          },
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 132.1830121803054,
+            "predicted_n": 45,
+            "decode_tps": 1.366549556475471,
+            "prompt_ms": 59584.056,
+            "predicted_ms": 32197.881
+          }
+        ],
+        "prefill_tps_median": 131.26,
+        "decode_tps_median": 1.37,
+        "prompt_n": 7876
+      },
+      "quality": {
+        "passed": 8,
+        "total": 10,
+        "results": [
+          {
+            "id": "a1",
+            "kind": "num",
+            "ok": true,
+            "detail": "352",
+            "reply": "352",
+            "prompt_n": 2922
+          },
+          {
+            "id": "a2",
+            "kind": "num",
+            "ok": true,
+            "detail": "2515",
+            "reply": "2515",
+            "prompt_n": 2925
+          },
+          {
+            "id": "a3",
+            "kind": "num",
+            "ok": false,
+            "detail": "1365",
+            "reply": "1365",
+            "prompt_n": 2928
+          },
+          {
+            "id": "a4",
+            "kind": "num",
+            "ok": false,
+            "detail": "5716",
+            "reply": "5716",
+            "prompt_n": 2928
+          },
+          {
+            "id": "a5",
+            "kind": "num",
+            "ok": true,
+            "detail": "19",
+            "reply": "19",
+            "prompt_n": 2925
+          },
+          {
+            "id": "j1",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"renews\": \"2026-03-14\", \"amount\": 18500, \"cadence\": \"monthly\"}\n```",
+            "prompt_n": 2935
+          },
+          {
+            "id": "j2",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"name\": \"Tomas Vogel\", \"title\": \"Head of Supply\", \"city\": \"Hamburg\"}\n```",
+            "prompt_n": 2932
+          },
+          {
+            "id": "j3",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"runs\": 97, \"drivers\": 18, \"on_time\": 0.79}\n```",
+            "prompt_n": 2931
+          },
+          {
+            "id": "j4",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\n\"start\": \"22:00\",\n\"end\": \"06:00\",\n\"differential_percent\": 15\n}\n```",
+            "prompt_n": 2937
+          },
+          {
+            "id": "j5",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"max_service_events\": 12, \"max_km\": 400000}\n```",
+            "prompt_n": 2931
+          }
+        ],
+        "prompt_n_median": 2931
+      }
+    },
+    {
+      "ctx_total": 65536,
+      "ctx_per_slot": 16384,
+      "cache_type": "q8_0",
+      "kv": {
+        "caches": [
+          {
+            "mib": 204.0,
+            "cells": 16384,
+            "layers": 3
+          },
+          {
+            "mib": 25.5,
+            "cells": 1024,
+            "layers": 12
+          }
+        ],
+        "total_mib": 229.5
+      },
+      "rss_after_warmup_mb": 2125.0,
+      "rss_after_eval_mb": 1990.0,
+      "peak_wset_mb": 2210.6,
+      "latency": {
+        "reps": [
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 98.50963896680099,
+            "predicted_n": 45,
+            "decode_tps": 1.5817606887388669,
+            "prompt_ms": 79951.567,
+            "predicted_ms": 27817.103
+          },
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 100.40793336391042,
+            "predicted_n": 45,
+            "decode_tps": 1.4275271553786417,
+            "prompt_ms": 78440.017,
+            "predicted_ms": 30822.531
+          },
+          {
+            "prompt_n": 7876,
+            "prefill_tps": 80.84450274318044,
+            "predicted_n": 45,
+            "decode_tps": 0.872000632438277,
+            "prompt_ms": 97421.59,
+            "predicted_ms": 50458.679
+          }
+        ],
+        "prefill_tps_median": 98.51,
+        "decode_tps_median": 1.43,
+        "prompt_n": 7876
+      },
+      "quality": {
+        "passed": 8,
+        "total": 10,
+        "results": [
+          {
+            "id": "a1",
+            "kind": "num",
+            "ok": true,
+            "detail": "352",
+            "reply": "352",
+            "prompt_n": 2922
+          },
+          {
+            "id": "a2",
+            "kind": "num",
+            "ok": true,
+            "detail": "2515",
+            "reply": "2515",
+            "prompt_n": 2925
+          },
+          {
+            "id": "a3",
+            "kind": "num",
+            "ok": false,
+            "detail": "1265",
+            "reply": "1265",
+            "prompt_n": 2928
+          },
+          {
+            "id": "a4",
+            "kind": "num",
+            "ok": false,
+            "detail": "5616",
+            "reply": "5616",
+            "prompt_n": 2928
+          },
+          {
+            "id": "a5",
+            "kind": "num",
+            "ok": true,
+            "detail": "19",
+            "reply": "19",
+            "prompt_n": 2925
+          },
+          {
+            "id": "j1",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"renews\": \"2026-03-14\", \"amount\": 18500, \"cadence\": \"monthly\"}\n```",
+            "prompt_n": 2935
+          },
+          {
+            "id": "j2",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"name\": \"Tomas Vogel\", \"title\": \"Head of Supply\", \"city\": \"Hamburg\"}\n```",
+            "prompt_n": 2932
+          },
+          {
+            "id": "j3",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\"runs\": 97, \"drivers\": 18, \"on_time\": 0.79}\n```",
+            "prompt_n": 2931
+          },
+          {
+            "id": "j4",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\n\"start\": \"22:00\",\n\"end\": \"06:00\",\n\"differential_percent\": 15\n}\n```",
+            "prompt_n": 2937
+          },
+          {
+            "id": "j5",
+            "kind": "json",
+            "ok": true,
+            "detail": "ok",
+            "reply": "```json\n{\n\"max_service_events\": 12,\n\"max_km\": 400000\n}\n```",
+            "prompt_n": 2931
+          }
+        ],
+        "prompt_n_median": 2931
+      }
+    }
+  ]
+}

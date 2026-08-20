@@ -48,6 +48,18 @@ thay vì chia sẻ. Chi phí đồng bộ ở cuối mỗi lớp cũng tăng the
 trùng đúng mặc định của lab (số nhân vật lý), nên tỉ số so với mặc định là 1.00x. Bài
 học ở đây mang tính xác nhận chứ không phải tối ưu — mặc định đã đúng, và giá trị của
 sweep là chứng minh rằng tăng thread không phải hướng đi, chứ không phải tìm ra cấu
-hình tốt hơn. Con số đáng chú ý cho việc tuning thực tế là spread 1.95x giữa `-t 1` và
-`-t 4`: chọn sai thread count theo hướng quá ít gây thiệt hại lớn hơn nhiều so với
-chọn quá nhiều.
+hình tốt hơn.
+
+Về bài học tuning thực tế thì phải nêu **cả hai** spread, vì chúng trả lời hai câu hỏi
+khác nhau:
+
+| Hướng đặt sai      | Spread so với `-t 4` | Throughput mất |
+| :----------------- | -------------------: | -------------: |
+| Quá ít (`-t 1`)    |            **1.95x** |            49% |
+| Quá nhiều (`-t 16`)|            **1.37x** |            27% |
+
+Về **độ lớn**, đặt thiếu thread thiệt hại nặng hơn hẳn: mất 49% throughput so với 27%.
+Nhưng về **xác suất mắc phải**, đặt thừa mới là lỗi phổ biến hơn — không ai cố tình gõ
+`-t 1`, còn `-t 16` thì trông như "dùng hết máy" và là con số nhiều người sẽ chọn theo
+phản xạ trên một chip 8 luồng. Kết luận vận hành: sai số lớn nhất nằm ở phía thiếu,
+nhưng rủi ro thực tế nằm ở phía thừa.

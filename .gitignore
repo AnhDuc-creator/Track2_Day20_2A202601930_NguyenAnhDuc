@@ -28,8 +28,11 @@ bonus/llama.cpp/
 benchmarks/locust-*_stats_history.csv
 benchmarks/locust-*_failures.csv
 benchmarks/locust-*_exceptions.csv
-# server log kept for diagnostics when a run fails; never part of a submission
+# server logs kept for diagnostics when a run fails; never part of a submission.
+# The bonus scripts write their own (.probe-server.log, .kv-quant-server.log,
+# .embed-server.log) and those run to megabytes, so match the whole family.
 benchmarks/.llama-server.log
+benchmarks/.*-server.log
 
 # ── TRACKED ON PURPOSE (do not add these) ────────────────────
 #   hardware.json                    rubric item 1

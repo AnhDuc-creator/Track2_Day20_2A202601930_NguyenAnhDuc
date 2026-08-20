@@ -1,0 +1,29 @@
+# Raw output of: LAB_N_GPU_LAYERS=0 python bonus/serving-regimes/embedding-serving.py
+# Captured 2026-08-20T16:19:05Z on Windows-AMD64, llama.cpp b10488
+# Server: labs/02-serve/serve.py --embedding  (log confirmed 'n_gpu_layers already set by user to 0, abort')
+# nvidia-smi while this server was alive: 847 MiB / 2048 MiB used
+# ---------------------------------------------------------------
+==> Embedding backend: llama-server /v1/embeddings @ http://localhost:8081/v1
+    dim = 1536   corpus = 8 docs
+
+Query: Does embedding serving use a KV cache and a decode loop like chat serving?
+
+Top matches (cosine similarity):
+  1. 0.848  Embedding serving is prefill-bound: one forward pass, no KV cache, no decode loop.
+  2. 0.785  RadixAttention reuses a shared prompt prefix across requests via a radix tree.
+  3. 0.744  Speculative decoding drafts several tokens and verifies them in one forward pass.
+
+==> Throughput sweep (texts/sec as batch grows — prefill-bound):
+  batch  1:  3393.6 ms  ->     0.3 texts/s
+  batch  2:  4320.9 ms  ->     0.5 texts/s
+  batch  4:  3435.5 ms  ->     1.2 texts/s
+  batch  8:  4561.6 ms  ->     1.8 texts/s
+  batch 16:  6700.9 ms  ->     2.4 texts/s
+
+--- Teaching notes (Day 20 §5 Serving Regimes) ---
+ * Embedding serving is PREFILL-BOUND: 1 forward pass/text, no KV cache, no decode loop.
+ * Throughput comes from large STATIC batches (token-sorted), not continuous batching.
+ * FP8 gives ~50% more throughput at >99% cosine similarity (Snowflake Arctic: 16x vLLM).
+ * RAG/agent inference is HALF retrieval — this is the other serving discipline.
+ * For real retrieval quality use a dedicated embedding model (Qwen3-Embedding, BGE-M3);
+   reusing a chat GGUF here keeps the demo to zero extra downloads.
